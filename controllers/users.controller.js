@@ -63,7 +63,6 @@ module.exports.userController = {
     },
     giveTheBook: async (req, res) => {
         const user = await User.findById(req.params.userid)
-        const book = await Book.findById(req.params.bookid)
         try {
             if (!user.booksId.includes(req.params.bookid)) {
                 res.json('У вас нету этой книги')
