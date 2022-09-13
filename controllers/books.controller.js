@@ -1,5 +1,5 @@
 const Book = require('../models/Book.model.js')
-const User = require('../models/User.model.js')
+
 
 module.exports.bookController = {
     addBook: async (req, res) => {
@@ -44,5 +44,20 @@ module.exports.bookController = {
             res.json(error.message)
         }
     },
-    
+    getBooksByGenreId: async (req, res) => {
+        try {
+            const book = await Book.find({ genre: req.params.id })
+            res.json(book)
+        } catch (error) {
+            res.json(error.message)
+        }
+    },
+    getBookById: async (req, res) => {
+        try {
+            const book = await Book.findById(req.params.id)
+            res.json(book)
+        } catch (error) {
+            res.json(error.message)
+        }
+    },
 }
